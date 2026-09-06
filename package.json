@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "node scripts/use-vite-index.js && vite",
+    "build": "node scripts/use-vite-index.js && tsc -b && vite build && node scripts/publish-dist-to-root.js",
     "lint": "oxlint",
     "preview": "vite preview"
   },
