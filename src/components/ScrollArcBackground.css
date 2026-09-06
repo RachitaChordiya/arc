@@ -1,0 +1,17 @@
+/* Sibling of .app__content inside .app — not transformed, so absolute
+   height can cover the full document and scroll with content. */
+.scroll-arc {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.scroll-arc__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,117 @@
+.image-carousel {
+  position: relative;
+  width: min(100%, 920px);
+  margin: 0 auto;
+}
+
+.image-carousel__viewport {
+  overflow: hidden;
+  border-radius: var(--image-radius);
+  background: #ececec;
+  aspect-ratio: 16 / 10;
+}
+
+.image-carousel__track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.95s cubic-bezier(0.33, 1, 0.32, 1);
+  will-change: transform;
+}
+
+.image-carousel__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.image-carousel__slide img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  user-select: none;
+}
+
+.image-carousel__slide--cover img {
+  object-fit: cover;
+}
+
+.image-carousel__slide--contain img {
+  object-fit: contain;
+  background: #f3f3f3;
+}
+
+.image-carousel__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-ink);
+  font-size: 1.35rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.image-carousel__nav:hover {
+  background: #ffffff;
+}
+
+.image-carousel__nav:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.image-carousel__nav--prev {
+  left: 0.65rem;
+}
+
+.image-carousel__nav--next {
+  right: 0.65rem;
+}
+
+.image-carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+}
+
+.image-carousel__dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.image-carousel__dot.is-active {
+  background: var(--color-ink);
+  transform: scale(1.15);
+}
+
+.image-carousel__dot:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image-carousel__track {
+    transition: none;
+  }
+}
