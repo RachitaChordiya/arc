@@ -17,7 +17,11 @@
   </head>
   <body>
     <div id="root"></div>
-    <div class="arc-cursor" hidden></div>
+    <div class="arc-cursor" hidden>
+      <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <circle cx="16" cy="16" r="14" pathLength="100"></circle>
+      </svg>
+    </div>
     <script>
       (function () {
         var fine = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -26,17 +30,17 @@
         if (!el) return;
         document.documentElement.classList.add("has-custom-cursor");
         el.hidden = false;
-        var hoverSel = "a, button, img, svg, input, textarea, select, label, [role='button'], [role='link'], .site-nav__link, .site-header__meta-link, .project-row, .project-stack__figure";
-        function isInteractive(node) {
+        var tabSel = "nav a, nav button, .site-nav__link, .site-nav__dot, .site-header__links a, .site-header__links button, .site-header__meta-link, .site-header__about, [role='tab'], [role='tablist'] a, [role='tablist'] button";
+        function isTab(node) {
           while (node && node !== document.body) {
-            if (node.nodeType === 1 && node.matches(hoverSel)) return true;
+            if (node.nodeType === 1 && node.matches(tabSel)) return true;
             node = node.parentElement;
           }
           return false;
         }
         window.addEventListener("pointermove", function (e) {
           el.style.transform = "translate(" + e.clientX + "px, " + e.clientY + "px)";
-          el.classList.toggle("is-hover", isInteractive(e.target));
+          el.classList.toggle("is-tab", isTab(e.target));
         }, { passive: true });
         fine.addEventListener("change", function (e) {
           if (!e.matches) {
