@@ -1,0 +1,95 @@
+.project-stack{
+  display:flex;
+  flex-direction:column;
+  gap:clamp(1.75rem,4vw,3rem);
+  width:100%;
+  max-width:var(--layout-max);
+  margin:2.25rem 0 0;
+}
+.project-stack__figure{
+  margin:0;
+  width:100%;
+}
+.project-stack__figure img{
+  width:100%;
+  height:auto;
+  max-height:min(78vh,820px);
+  object-fit:cover;
+  object-position:center;
+  border-radius:var(--image-radius);
+  background:var(--color-surface);
+}
+.project-stack__figure--contain img{
+  object-fit:contain;
+  background:transparent;
+}
+.project-stack__copy,
+.project-stack .project-page__prose{
+  margin:0 auto;
+  max-width:42rem;
+  width:100%;
+  color:var(--color-ink);
+  font-family:var(--font-body);
+  font-size:1.08rem;
+  line-height:1.6;
+}
+.project-page ul,
+.about-page ul,
+.project-page__highlights{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.project-page li,
+.about-page li,
+.project-page__highlights li{
+  display:block;
+  list-style:none;
+}
+.site-footer__copy{
+  text-transform:none;
+  letter-spacing:.04em;
+}
+.project-page__back{
+  font-size:1.4rem;
+  letter-spacing:0;
+  text-transform:none;
+  line-height:1;
+}
+img[src*="stone-texture"]{
+  aspect-ratio:3/4;
+  width:100%;
+  height:auto;
+  max-height:none;
+  object-fit:cover;
+  object-position:center;
+}
+html.has-custom-cursor,
+html.has-custom-cursor *{
+  cursor:none !important;
+}
+.arc-cursor{
+  position:fixed;
+  top:0;
+  left:0;
+  width:18px;
+  height:18px;
+  margin:-9px 0 0 -9px;
+  border-radius:50%;
+  background:#7EB8B0;
+  pointer-events:none;
+  z-index:99999;
+  transition:background-color .16s ease;
+}
+.arc-cursor.is-hover{
+  background:#E8B48A;
+}
+@media (hover:none), (pointer:coarse){
+  html.has-custom-cursor,
+  html.has-custom-cursor *{
+    cursor:auto !important;
+  }
+  .arc-cursor{
+    display:none !important;
+  }
+}

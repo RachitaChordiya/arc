@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ARC — Architecture, Interior, Landscape, Planning</title>
+    <title>arc studio — Architecture, Interior, Landscape, Planning</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,8 +13,38 @@
     />
     <script type="module" crossorigin src="/arc/assets/index-y_Z-qp0E.js"></script>
     <link rel="stylesheet" crossorigin href="/arc/assets/index-D8PlR4_Y.css">
+    <link rel="stylesheet" href="/arc/assets/project-stack.css">
   </head>
   <body>
     <div id="root"></div>
+    <div class="arc-cursor" hidden></div>
+    <script>
+      (function () {
+        var fine = window.matchMedia("(hover: hover) and (pointer: fine)");
+        if (!fine.matches) return;
+        var el = document.querySelector(".arc-cursor");
+        if (!el) return;
+        document.documentElement.classList.add("has-custom-cursor");
+        el.hidden = false;
+        var hoverSel = "a, button, img, svg, input, textarea, select, label, [role='button'], [role='link'], .site-nav__link, .site-header__meta-link, .project-row, .project-stack__figure";
+        function isInteractive(node) {
+          while (node && node !== document.body) {
+            if (node.nodeType === 1 && node.matches(hoverSel)) return true;
+            node = node.parentElement;
+          }
+          return false;
+        }
+        window.addEventListener("pointermove", function (e) {
+          el.style.transform = "translate(" + e.clientX + "px, " + e.clientY + "px)";
+          el.classList.toggle("is-hover", isInteractive(e.target));
+        }, { passive: true });
+        fine.addEventListener("change", function (e) {
+          if (!e.matches) {
+            document.documentElement.classList.remove("has-custom-cursor");
+            el.hidden = true;
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
