@@ -11,15 +11,15 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Montserrat:wght@400;500;600;700&family=PT+Sans+Narrow:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/arc/assets/index-y_Z-qp0E.js"></script>
-    <link rel="stylesheet" crossorigin href="/arc/assets/index-D8PlR4_Y.css">
-    <link rel="stylesheet" href="/arc/assets/project-stack.css">
+    <script type="module" crossorigin src="./assets/index-y_Z-qp0E.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-D8PlR4_Y.css">
+    <link rel="stylesheet" href="./assets/project-stack.css">
   </head>
   <body>
     <div id="root"></div>
     <div class="arc-cursor" hidden>
       <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-        <circle cx="16" cy="16" r="14" pathLength="100"></circle>
+        <circle cx="16" cy="16" r="9" fill="#7EB8B0" stroke="none"></circle>
       </svg>
     </div>
     <script>
@@ -39,8 +39,9 @@
           return false;
         }
         window.addEventListener("pointermove", function (e) {
-          el.style.transform = "translate(" + e.clientX + "px, " + e.clientY + "px)";
-          el.classList.toggle("is-tab", isTab(e.target));
+          var tab = isTab(e.target);
+          el.classList.toggle("is-tab", tab);
+          el.style.transform = "translate(" + e.clientX + "px, " + e.clientY + "px) scale(" + (tab ? "1.7" : "1") + ")";
         }, { passive: true });
         fine.addEventListener("change", function (e) {
           if (!e.matches) {
